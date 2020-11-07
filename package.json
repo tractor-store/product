@@ -1,15 +1,24 @@
 {
   "scripts": {
-    "start": "snowpack dev",
-    "build": "snowpack build",
+    "start": "rm -rf ./dist && NODE_ENV=development rollup -c --watch",
+    "build": "rm -rf ./dist && rollup -c",
     "test": "echo \"This template does not include a test runner by default.\" && exit 1"
   },
   "dependencies": {
-    "vue": "3.0.0"
+    "single-spa-vue": "^2.0.0",
+    "vue": "3.0.0",
+    "vue-router": "^3.4.9"
   },
   "devDependencies": {
-    "@snowpack/plugin-dotenv": "^2.0.4",
-    "@snowpack/plugin-vue": "^2.2.4",
-    "snowpack": "^2.16.0"
+    "@rollup/plugin-alias": "^3.1.1",
+    "@rollup/plugin-commonjs": "^16.0.0",
+    "@rollup/plugin-node-resolve": "^10.0.0",
+    "@rollup/plugin-replace": "^2.3.4",
+    "@vue/compiler-sfc": "^3.0.2",
+    "rollup": "^2.33.1",
+    "rollup-plugin-css-only": "^2.1.0",
+    "rollup-plugin-serve": "^1.1.0",
+    "rollup-plugin-vue": "^6.0.0-beta.11",
+    "systemjs-webpack-interop": "^2.1.2"
   }
 }

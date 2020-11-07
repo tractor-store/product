@@ -1,14 +1,17 @@
-import { createApp } from "vue";
+//import { h, createApp } from "vue";
 import App from "./App.vue";
+import './set-public-path';
+import router from './router';
+import singleSpaVue from 'single-spa-vue';
 
-const app = createApp(App);
-app.mount("#app");
+const vueLifecycles = singleSpaVue({
+  Vue,
+  appOptions: {
+    render: h => h(App),
+    router
+  }
+});
 
-// Hot Module Replacement (HMR) - Remove this snippet to remove HMR.
-// Learn more: https://www.snowpack.dev/#hot-module-replacement
-if (import.meta.hot) {
-  import.meta.hot.accept();
-  import.meta.hot.dispose(() => {
-    app.unmount();
-  });
-}
+export const bootstrap = vueLifecycles.bootstrap;
+export const mount = vueLifecycles.mount;
+export const unmount = vueLifecycles.unmount;
